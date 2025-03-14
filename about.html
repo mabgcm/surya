@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="house renovation services, landscape design and construction, deck maintenance and restoration, trusted renovation company, Greater Toronto Area renovation services, hassle-free renovation projects, excellence in house renovation, customer satisfaction in renovation, experienced renovation team, knowledgeable renovation professionals, innovative landscape design, reliable deck services, quality renovation materials, expertise in house renovation, deck maintenance experts, superior landscape construction, reputable renovation provider, industry best practices in renovation, renovation projects that exceed expectations, skilled professionals in renovation"/>
+	<meta name="author" content="M.Ali Bugucam"/>
+	<meta name="robots" content="index, follow"/>
+	<meta name="description" content="Harvelli is a trusted provider of house renovation, landscape design, and deck services in the Greater Toronto Area. With years of experience and expertise, we deliver excellence in renovation, ensuring hassle-free projects that exceed customer expectations. Contact us for innovative landscape construction and reliable deck maintenance."/>
+	
+	<!-- Mobile Specific -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- Title -->
+	<title>Harvelli - Home Renovation, Landscape, and Deck Services</title>
+	
+	<!-- Favicon icon -->
+	<link rel="icon" type="image/png" href="images/favicon.ico">
+	
+	<!-- Stylesheet -->
+	<link href="vendor/animate/animate.css" rel="stylesheet">
+	<link href="vendor/magnific-popup/magnific-popup.min.css" rel="stylesheet">
+	<link href="vendor/aos/aos.css" rel="stylesheet">
+	
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="vendor/swiper/swiper-bundle.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" class="skin" href="css/skin/skin-1.css">
+	
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+	<!-- EmailJS -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+	
+	<script type="text/javascript">
+        (function() {
+            emailjs.init('P6ZwA02UxmqIGo2YQ');
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // generate a five digit number for the contact_number variable
+                this.contact_number.value = Math.random() * 100000 | 0;
+                // these IDs from the previous steps
+                emailjs.sendForm('service_sdxryck', 'template_yc5koaw', this)
+                    .then(function() {
+                        console.log('SUCCESS!');
+                        // reset each input field in the form
+                      var inputs = document.getElementById('contact-form').getElementsByTagName('input');
+                      for (var i = 0; i < inputs.length; i++) {
+                          inputs[i].value = '';
+                      }
+                      var textarea = document.getElementById('contact-form').getElementsByTagName('textarea')[0];
+                      textarea.value = '';
+                      Toastify({
+                      text: "Message sent successfully!",
+                      duration: 3000,
+                      close: true,
+                      gravity: "bottom",
+                      position: "right",
+                      backgroundColor: "#4CAF50",
+                      stopOnFocus: true,
+                  }).showToast();
+                    }, function(error) {
+                        console.log('FAILED...', error);
+                    });
+            });
+        }
+    </script>
+</head>
+<body id="bg">
+<div id="loading-area" class="loading-page-4">
+	<div class="loading-inner">
+		<div class="load-text">
+			<span data-text="H" class="text-load">H</span>
+			<span data-text="A" class="text-load">A</span>
+			<span data-text="R" class="text-load">R</span>
+			<span data-text="V" class="text-load">V</span>
+			<span data-text="E" class="text-load">E</span>
+			<span data-text="L" class="text-load">L</span>
+			<span data-text="L" class="text-load">L</span>
+			<span data-text="I" class="text-load">I</span>
+		</div>
+	</div>
+</div>
+<div class="page-wraper">
+	<!-- Header -->
+	<header class="site-header mo-left style-1">
+		<!-- Top Bar -->
+		<div class="top-bar text-white">
+			<div class="container">
+				<div class="dz-topbar-inner d-flex justify-content-between align-items-center">
+					<div class="dz-topbar-left">
+						<p>Mon-Fri: 9am - 5pm</p>
+					</div>
+					<div class="dz-topbar-right">
+						<ul>
+							<li><i class="fas fa-phone-alt"></i> Phone line:  647 534-6163</li>
+							<li><i class="fas fa-envelope"></i> info@harvelli.ca</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Main Header -->
+		<div class="sticky-header main-bar-wraper navbar-expand-lg">
+			<div class="main-bar clearfix ">
+				<div class="container clearfix">
+					<!-- Website Logo -->
+					<div class="logo-header mostion logo-white">
+						<a href="index.html"><img src="images/logo-white.png" alt=""></a>
+					</div>
+					<!-- Nav Toggle Button -->
+					<button class="navbar-toggler collapsed navicon justify-content-start" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
+					<!-- Extra Nav -->
+					<div class="extra-nav">
+						<div class="extra-cell">
+							<a href="contact-us.html" class="btn btn-primary btn-border d-sm-inline-flex d-none white-border">CONTACT US</a>
+						</div>
+					</div>
+					<!-- Extra Nav -->
+					
+					<div class="header-nav navbar-collapse collapse justify-content-start" id="navbarNavDropdown">
+						<div class="logo-header logo-dark">
+							<a href="index.html"><img src="images/logo.png" alt=""></a>
+						</div>
+						<ul class="nav navbar-nav navbar navbar-left">	
+							<li class="sub-menu-down"><a href="index.html"><span>Home</span></a>
+								
+							</li>
+							<li class="has-mega-menu"><a href="about.html">About Us</a></li>
+							<li class="has-mega-menu"><a href="projects.html">Projects</a></li>
+							<li class="sub-menu-down"><a href="javascript:void(0);"><span>Services</span></a>
+								<ul class="sub-menu">
+									<li><a href="landscape.html">Landscape & Interlocking</a></li>
+									<li><a href="renovation.html">House Renovation</a></li>
+									<li><a href="deck.html">Deck & Fence</a></li>
+								</ul>
+							</li>
+
+							<li class="sub-menu-down"><a href="blog.html"><span>News & Trends</span></a></li>
+
+
+							
+						</ul>
+						<div class="dz-social-icon">
+							<ul>
+								<li><a class="fab fa-linkedin-in" target="_blank" href="https://www.linkedin.com/company/harvelli/"></a></li>
+								<li><a class="fab fa-facebook-f" target="_blank" href="https://www.facebook.com/harvelli.ca"></a></li>
+								<li><a class="fab fa-instagram" target="_blank" href="https://www.instagram.com/harvelli.ca/"></a></li>
+							</ul>
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Main Header End -->
+	</header>
+	<!-- Header End -->
+	
+	<div class="page-content bg-white">
+		
+		<!-- Banner  -->
+		<div class="dz-bnr-inr dz-bnr-inr-sm overlay-black-middle text-center" style="background-image: url(images/bnr/bnr1.jpg);">
+			<div class="container">
+				<div class="dz-bnr-inr-entry">
+					<h1>About Harvelli</h1>
+				</div>
+			</div>
+		</div>
+		<!-- Banner End -->
+		
+		<!-- About -->
+		<section class="content-inner">
+			<div class="container">
+				<div class="row about-style13">
+					<div class="col-lg-6 m-b30">
+						<div class="dz-media">	
+							<img  class="main-img" src="images/about/about5.jpg" alt="">
+							<div class="bg-img overlay-black-middle" >
+								<img src="images/about/about5.jpg" alt="">
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 m-b30 align-self-center">
+						<div class="about-content">
+							<div class="section-head style-1">
+								<h5 class="sub-title text-primary">Welcome to Harvelli</h5>
+								<h3 class="title m-b20">Choose the quality for exceptional results that exceed your renovation expectations.</h3>
+								<p>At Harvelli, we go beyond beautiful results. Our experts make renovations hassle-free, ensuring exceptional service and remarkable transformations.</p>
+							</div>
+							<div class="row m-b30">
+								<div class="col-sm-6">
+									<ul class="list-circle gray">
+										<li>Trusted provider</li>
+										<li>Exceed expectations</li>
+										<li>Hassle-free process</li>
+										<li>Strong client relationships</li>
+										<li>Years of experience</li>
+									</ul>
+								</div>
+								<div class="col-sm-6">
+									<ul class="list-circle gray">
+										<li>Expertise in industry</li>
+										<li>Deck specialists</li>
+										<li>Innovative landscape design</li>
+										<li>Quality materials used</li>
+										<li>Skilled professionals</li>
+									</ul>
+								</div>
+							</div>
+							<a href="javascript:void(0);" class="btn btn-primary btn-border m-r10 m-b10">CONTACT US</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		
+		<section class="content-inner-4 overlay-black-middle" style="background-image:url('images/background/bg8.jpg');background-size: cover;background-position: center;">
+			<div class="container">
+				<div class="section-head text-center">
+					<h6 class="sub-title text-white">Explore Recent Work</h6>
+					<h2 class="title m-b20 m-t15 text-white">We've Done Lot's Projects Let's Check Some Here</h2>
+				</div>
+				<a href="https://www.youtube.com/watch?v=_FRZVScwggM" class="popup-youtube play-btn6 m-auto"><i class="fa fa-play"></i></a>
+			</div>
+		</section>
+		
+		<!-- About -->
+		<section class="content-inner">
+			<div class="container">
+				<div class="row about-style12">
+					<div class="col-lg-5 m-b30 align-self-center">
+						<div class="about-content">
+							<div class="section-head style-1">
+								<h5 class="sub-title text-primary">What We do </h5>
+								<h2 class="title m-b20">Improvement of Your House Exterior and Interior</h2>
+							</div>
+							<ul class="list-check-box">
+								<li>Landscape & Interlocking</li>
+								<li>House Renovation</li>
+								<li>Deck & Fence</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-7 m-b30">
+						<div class="dz-media">	
+							<img src="images/about/about5.jpg" alt="">
+							<ul class="list-arrow-right-circle white">
+								<li>Attention to detail</li>
+								<li>Timely project completion</li>
+								<li>Reliable and dependable service</li>
+								<li>VCustomized solutions for every client</li>
+								<li>Clear communication throughout the process</li>
+								<li>Use of industry best practices</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Counter -->
+		<section class="content-inner bg-img-fix overlay-primary-dark" style="background-image: url(images/background/bg1.jpg);">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-sm-6">
+						<div class="counter-style-3 m-b30 icon-up">
+							<div class="icon-bx icon-md text-white">
+								<!-- <i class="flaticon-engineer-2"></i> -->
+								<i class="flaticon-users"></i>
+							</div>
+							<div class="counter-info">
+								<div class="counter-num">
+									<h2 class="counter text-white">261</h2>
+								</div>
+								<h5 class="counter-text text-white">Happy Clients</h5>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-sm-6">
+						<div class="counter-style-3 m-b30 icon-up">
+							<div class="icon-bx icon-md text-white">
+								<i class="flaticon-list"></i>
+							</div>
+							<div class="counter-info">
+								<div class="counter-num">
+									<h2 class="counter text-white">310</h2>
+								</div>
+								<h5 class="counter-text text-white">Finished Project</h5>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-sm-6">
+						<div class="counter-style-3 m-b30 icon-up">
+							<div class="icon-bx icon-md text-white">
+								<i class="flaticon-users"></i>
+							</div>
+							<div class="counter-info">
+								<div class="counter-num">
+									<h2 class="counter text-white">64</h2>
+								</div>
+								<h5 class="counter-text text-white">Locations</h5>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-sm-6">
+						<div class="counter-style-3 m-b30 icon-up">
+							<div class="icon-bx icon-md text-white">
+								<i class="flaticon-trophy"></i>
+							</div>
+							<div class="counter-info">
+								<div class="counter-num">
+									<h2 class="counter text-white">486102</h2>
+								</div>
+								<h5 class="counter-text text-white">SqFeet of Land</h5>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section class="content-inner section-1" style="background-image:url('images/background/bg7.png'); background-size: cover;">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 m-b30">
+						<div class="contact-area1 m-r20 m-md-r0">
+							<div class="section-head style-1">
+								<h6 class="sub-title text-primary">CONTACT US</h6>
+								<h3 class="title m-b20">Request A Quote</h3>
+							</div>
+							<form id="contact-form" class="dz-form dzForm">
+								<input type="hidden" class="form-control" name="contact_number" value="Contact">
+								<!-- <div class="dzFormMsg"></div>		 -->
+								<div class="input-group">
+									<input required type="text" class="form-control" name="dzName" placeholder="Full Name">
+								</div>
+								<div class="input-group">
+									<input required type="text" class="form-control" name="dzEmail" placeholder="Email Adress">
+								</div>
+								<div class="input-group">
+									<input required type="text" class="form-control" name="dzPhoneNumber" placeholder="Phone No.">
+								</div>
+								<div class="input-group">
+									<textarea required name="message" rows="5" class="form-control" placeholder="Brief info about the project"></textarea>
+								</div>
+								<div>
+									<button type="submit" value="send" class="btn w-100 btn-primary btn-border">CONTACT US</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="col-lg-6 m-b30 align-self-center">
+						<div class="section-head style-1">
+							<h3 class="title m-b20">We Are Always Best For Industrial Solution</h3>
+						</div>
+						<ul class="list-check primary m-b40">
+							<li>Think Positive, Think Always</li>
+							<li>Everyone Loves Got An Incredible</li>
+							<li>Our Professional Team Works</li>
+							<li>We Are Laregest Independent</li>
+						</ul>
+						<div class="split-box">
+							<img src="images/about/about28.jpg" class="w-100" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Subscribe -->
+		<section class="section-full dz-subscribe style-1">
+			<div class="container">
+				<div class="subscribe-inner row align-items-center">
+					<div class="col-lg-6 mb-lg-0 mb-4">
+						<div class="title-head">
+							<i class="fas fa-envelope-open-text"></i>
+							<h3 class="title text-white">SIGN UP TO GET LATEST UPDATES</h3>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<form class="dzSubscribe" action="script/mailchamp.php" method="post">
+							<div class="dzSubscribeMsg"></div>
+							<div class="form-group">
+								<div class="input-group">
+									<input name="dzEmail" required="required" type="email" class="form-control" placeholder="Email Address...">
+									<div class="input-group-addon">
+										<button name="submit" value="Submit" type="submit" class="btn btn-primary"><i class="fas fa-envelope"></i></button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+		<!-- Footer -->
+	<footer class="site-footer style-1" id="footer">
+		<!-- Footer Top -->
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-4 col-lg-4 col-sm-6">
+						<div class="widget widget_about">
+							<div class="footer-logo logo-white">
+								<a href="index.html"><img src="images/logo-white.png" alt=""/></a> 
+							</div>
+							<p>Our goal is to offer broad capabilities, competitive pricing, exceptional quality and outstanding service to each and every customer.</p>
+							<div class="call-box2 m-t20 m-b20"><span><i class="fas fa-phone"></i></span>647 534-6163</div>
+							<div class="dz-social-icon">
+								<ul>
+									<li><a class="fab fa-linkedin-in" target="_blank" href="https://www.linkedin.com/company/harvelli/"></a></li>
+									<li><a class="fab fa-facebook-f" target="_blank" href="https://www.facebook.com/harvelli.ca"></a></li>
+									<li><a class="fab fa-instagram" target="_blank" href="https://www.instagram.com/harvelli.ca/"></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-2 col-sm-6 col-6">
+						<div class="widget widget_services">
+							<h4 class="footer-title">EXPLORE</h4>
+							<ul class="list-2">
+								<li><a href="about.html">About Us</a></li>
+								<li><a href="projects.html">Projects</a></li>
+								<li><a href="blog.html">News & Trends</a></li>
+								<li><a href="contact-us.html">Contact Us</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-sm-4 col-6">
+						<div class="widget widget_services">
+							<h4 class="footer-title">SERVICES</h4>
+							<ul >
+								<li><a href="landscape.html">Landscape & Interlocking</a></li>
+								<li><a href="renovation.html">House Renovation</a></li>
+								<li><a href="deck.html">Deck & Fence</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-4 col-sm-8">
+						<div class="widget recent-posts-entry">
+							<h4 class="footer-title">LATEST NEWS</h4>
+							<div class="widget-post-bx">
+								<div class="widget-post clearfix">
+									<div class="dz-media"> 
+										<img src="images/blog/recent-blog/pic4.jpg" alt="">
+									</div>
+									<div class="dz-info">
+										<div class="dz-meta">
+											<ul>
+												<li class="post-date"> Jul 28, 2023</li>
+											</ul>
+										</div>
+										<h6 class="title"><a href="blog4.html">Budget-Friendly Landscaping Ideas for Homeowners on a Tight Budget</a></h6>
+									</div>
+								</div>
+								<div class="widget-post clearfix">
+									<div class="dz-media"> 
+										<img src="images/blog/recent-blog/pic3.jpg" alt="">
+									</div>
+									<div class="dz-info">
+										<div class="dz-meta">
+											<ul>
+												<li class="post-date"> May 26, 2023</li>
+											</ul>
+										</div>
+										<h6 class="title"><a href="blog3.html">How to Ensure a Hassle-Free Experience for Homeowners</a></h6>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Footer Bottom -->
+		<div class="footer-bottom text-center">
+			<div class="container">
+				<div class="ft-inner">
+					<div class="row">
+						<div class="col-lg-12"> 
+							<span class="copyright-text">Copyright © 2022 <a href="https://mabgcm.com/" target="_blank">M.A.Bugucam</a>. All rights reserved.</span> 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer End -->
+	<button class="scroltop icon-up" type="button"><i class="fas fa-arrow-up"></i></button>
+	
+</div>
+<!-- JAVASCRIPT FILES ========================================= -->
+<script src="js/jquery.min.js"></script><!-- JQUERY.MIN JS -->
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="vendor/magnific-popup/magnific-popup.js"></script><!-- MAGNIFIC POPUP JS -->
+<script src="vendor/counter/waypoints-min.js"></script><!-- WAYPOINTS JS -->
+<script src="vendor/counter/counterup.min.js"></script><!-- COUNTERUP JS -->
+<script src="vendor/swiper/swiper-bundle.min.js"></script><!-- SWIPER SLIDER -->
+<script src="js/dz.carousel.js"></script><!-- DZ CAROUSEL -->
+<script src="js/dz.ajax.js"></script><!-- AJAX -->
+<script src="js/custom.js"></script><!-- CUSTOM JS -->
+<script src='https://www.google.com/recaptcha/api.js'></script> <!-- Google API For Recaptcha  -->
+<script src="vendor/rangeslider/rangeslider.js"></script><!-- RANGESLIDER -->
+<script src="vendor/switcher/switcher.js"></script><!-- SWITCHER --></body>
+</html>
