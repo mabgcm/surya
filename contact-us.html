@@ -47,6 +47,7 @@
                 fetch('https://textbelt.com/text', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
+                    mode: 'no-cors', // Bypass CORS
                     body: JSON.stringify({
                         phone: '+14372196444',
                         message: smsMessage.substring(0, 160),
