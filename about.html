@@ -36,44 +36,77 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
+	<!-- Toastify -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
 	<!-- EmailJS -->
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 	
 	<script type="text/javascript">
         (function() {
-            emailjs.init('P6ZwA02UxmqIGo2YQ');
+            emailjs.init('z-I8YyVq0ntsmTnCA');
         })();
     </script>
     <script type="text/javascript">
         window.onload = function() {
             document.getElementById('contact-form').addEventListener('submit', function(event) {
                 event.preventDefault();
-                // generate a five digit number for the contact_number variable
                 this.contact_number.value = Math.random() * 100000 | 0;
-                // these IDs from the previous steps
-                emailjs.sendForm('service_sdxryck', 'template_yc5koaw', this)
+
+                // Send to email
+                emailjs.sendForm('service_t7a2lnn', 'template_xszojxk', this)
                     .then(function() {
-                        console.log('SUCCESS!');
-                        // reset each input field in the form
-                      var inputs = document.getElementById('contact-form').getElementsByTagName('input');
-                      for (var i = 0; i < inputs.length; i++) {
-                          inputs[i].value = '';
-                      }
-                      var textarea = document.getElementById('contact-form').getElementsByTagName('textarea')[0];
-                      textarea.value = '';
-                      Toastify({
-                      text: "Message sent successfully!",
-                      duration: 3000,
-                      close: true,
-                      gravity: "bottom",
-                      position: "right",
-                      backgroundColor: "#4CAF50",
-                      stopOnFocus: true,
-                  }).showToast();
+                        console.log('Email SUCCESS!');
+                        resetForm();
                     }, function(error) {
-                        console.log('FAILED...', error);
+                        console.log('Email FAILED...', error);
+                        showErrorToast();
+                    });
+
+                // Send to SMS via Rogers gateway
+                emailjs.send('service_t7a2lnn', 'template_i6mrydz', { // Replace 'template_abc123' with the actual SMS Template ID
+                    name: this.dzName.value,
+                    user_phone: this.dzPhoneNumber.value,
+                    message: this.message.value
+                })
+                    .then(function() {
+                        console.log('SMS SUCCESS!');
+                    }, function(error) {
+                        console.log('SMS FAILED...', error);
+                        showErrorToast();
                     });
             });
+        }
+
+        function resetForm() {
+            var inputs = document.getElementById('contact-form').getElementsByTagName('input');
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].value = '';
+            }
+            var textarea = document.getElementById('contact-form').getElementsByTagName('textarea')[0];
+            textarea.value = '';
+            Toastify({
+                text: "Message sent successfully!",
+                duration: 3000,
+                close: true,
+                gravity: "bottom",
+                position: "right",
+                style: { background: "#4CAF50" },
+                stopOnFocus: true,
+            }).showToast();
+        }
+
+        function showErrorToast() {
+            Toastify({
+                text: "Failed to send message. Please try again.",
+                duration: 3000,
+                close: true,
+                gravity: "bottom",
+                position: "right",
+                style: { background: "#F44336" },
+                stopOnFocus: true,
+            }).showToast();
         }
     </script>
 </head>
@@ -239,7 +272,7 @@
 					</div>
 					<div class="col-lg-7 m-b30">
 						<div class="dz-media">	
-							<img src="images/about/about5.jpg" alt="">
+							<img src="images/about/about2.jpg" alt="">
 							<ul class="list-arrow-right-circle white">
 								<li>Flawless attention to detail</li>
 								<li>Timely project delivery</li>
@@ -321,11 +354,10 @@
 						<div class="contact-area1 m-r20 m-md-r0">
 							<div class="section-head style-1">
 								<h6 class="sub-title text-primary">CONTACT US</h6>
-								<h3 class="title m-b20">Request A Quote</h3>
+								<h3 class="title m-b20">Request a Free Estimate</h3>
 							</div>
-							<form id="contact-form" class="dz-form dzForm">
+							<form id="contact-form" class="dz-form dzForm" action="#">
 								<input type="hidden" class="form-control" name="contact_number" value="Contact">
-								<!-- <div class="dzFormMsg"></div>		 -->
 								<div class="input-group">
 									<input required type="text" class="form-control" name="dzName" placeholder="Full Name">
 								</div>
@@ -336,7 +368,7 @@
 									<input required type="text" class="form-control" name="dzPhoneNumber" placeholder="Phone No.">
 								</div>
 								<div class="input-group">
-									<textarea required name="message" rows="5" class="form-control" placeholder="Brief info about the project"></textarea>
+									<textarea required name="message" rows="5" class="form-control" placeholder="Tell us about your project (stucco, interior design, etc.)"></textarea>
 								</div>
 								<div>
 									<button type="submit" value="send" class="btn w-100 btn-primary btn-border">CONTACT US</button>
