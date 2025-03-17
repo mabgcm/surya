@@ -1,330 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="stucco services, interior design, Greater Toronto Area stucco, GTA interior designers, stucco installation, custom interior design, stucco repair, residential interior styling, trusted stucco company, professional interior design, quality stucco finishes, innovative home interiors, stucco maintenance, GTA home exteriors, contact stucco experts"/>
-    <meta name="author" content="M.Ali Bugucam"/>
-    <meta name="robots" content="index, follow"/>
-    <meta name="description" content="Contact Wall & Style for expert stucco and interior design services in the Greater Toronto Area. With over 15 years of experience, we’re here to transform your home. Reach out for a free estimate today!"/>
-    
-    <!-- Mobile Specific -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- Title -->
-    <title>Wall & Style - Contact Us</title>
-    
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" href="images/favicon.ico">
-    
-    <!-- Stylesheet -->
-    <link href="vendor/animate/animate.css" rel="stylesheet">
-    <link href="vendor/magnific-popup/magnific-popup.min.css" rel="stylesheet">
-    <link href="vendor/aos/aos.css" rel="stylesheet">
-    
-    <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="vendor/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" class="skin" href="css/skin/skin-6.css">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <!-- Toastify -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="stucco services, interior design, Greater Toronto Area stucco, GTA interior designers, stucco installation, custom interior design, stucco repair, residential interior styling, trusted stucco company, professional interior design, quality stucco finishes, innovative home interiors, stucco maintenance, GTA home exteriors, contact stucco experts"/>
+	<meta name="author" content="M.Ali Bugucam"/>
+	<meta name="robots" content="index, follow"/>
+	<meta name="description" content="Contact Wall & Style for expert stucco and interior design services in the Greater Toronto Area. With over 15 years of experience, we’re here to transform your home. Reach out for a free estimate today!"/>
+	
+	<!-- Mobile Specific -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- Title -->
+	<title>Wall & Style - Contact Us</title>
+	
+	<!-- Favicon icon -->
+	<link rel="icon" type="image/png" href="images/favicon.ico">
+	
+	<!-- Stylesheet -->
+	<link href="vendor/animate/animate.css" rel="stylesheet">
+	<link href="vendor/magnific-popup/magnific-popup.min.css" rel="stylesheet">
+	<link href="vendor/aos/aos.css" rel="stylesheet">
+	
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="vendor/swiper/swiper-bundle.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" class="skin" href="css/skin/skin-6.css">
+	
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	<!-- Toastify -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
+	<!-- EmailJS -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+	
+	<script type="text/javascript">
+        (function() {
+            emailjs.init('z-I8YyVq0ntsmTnCA');
+        })();
+    </script>
     <script type="text/javascript">
         window.onload = function() {
             document.getElementById('contact-form').addEventListener('submit', function(event) {
                 event.preventDefault();
                 this.contact_number.value = Math.random() * 100000 | 0;
 
-                // Send SMS using Textbelt with no-cors mode
-                const smsMessage = `New Contact: ${this.dzName.value}, ${this.dzPhoneNumber.value} - ${this.message.value}`;
-                fetch('https://textbelt.com/text', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    mode: 'no-cors', // Bypass CORS
-                    body: JSON.stringify({
-                        phone: '+14372196444',
-                        message: smsMessage.substring(0, 160),
-                        key: 'textbelt'
-                    })
+                // Send to email
+                emailjs.sendForm('service_t7a2lnn', 'template_xszojxk', this)
+                    .then(function() {
+                        console.log('Email SUCCESS!');
+                        resetForm();
+                    }, function(error) {
+                        console.log('Email FAILED...', error);
+                        showErrorToast();
+                    });
+
+                // Send to SMS via Rogers gateway
+                emailjs.send('service_t7a2lnn', 'template_i6mrydz', { // Replace 'template_abc123' with the actual SMS Template ID
+                    name: this.dzName.value,
+                    user_phone: this.dzPhoneNumber.value,
+                    message: this.message.value
                 })
-                .then(response => {
-                    console.log('Request sent, response opaque due to no-cors');
-                    // Since no-cors prevents reading response, assume success if no error
-                    resetForm();
-                })
-                .catch(error => {
-                    console.log('SMS Failed:', error);
-                    showErrorToast();
-                });
+                    .then(function() {
+                        console.log('SMS SUCCESS!');
+                    }, function(error) {
+                        console.log('SMS FAILED...', error);
+                        showErrorToast();
+                    });
             });
+        }
 
-            function resetForm() {
-                var inputs = document.getElementById('contact-form').getElementsByTagName('input');
-                for (var i = 0; i < inputs.length; i++) {
-                    inputs[i].value = '';
-                }
-                var textarea = document.getElementById('contact-form').getElementsByTagName('textarea')[0];
-                textarea.value = '';
-                Toastify({
-                    text: "Message sent successfully! Please check the phone for confirmation.",
-                    duration: 3000,
-                    close: true,
-                    gravity: "bottom",
-                    position: "right",
-                    style: { background: "#4CAF50" },
-                    stopOnFocus: true,
-                }).showToast();
+        function resetForm() {
+            var inputs = document.getElementById('contact-form').getElementsByTagName('input');
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].value = '';
             }
+            var textarea = document.getElementById('contact-form').getElementsByTagName('textarea')[0];
+            textarea.value = '';
+            Toastify({
+                text: "Message sent successfully!",
+                duration: 3000,
+                close: true,
+                gravity: "bottom",
+                position: "right",
+                style: { background: "#4CAF50" },
+                stopOnFocus: true,
+            }).showToast();
+        }
 
-            function showErrorToast() {
-                Toastify({
-                    text: "Failed to send message. Please try again or contact support.",
-                    duration: 3000,
-                    close: true,
-                    gravity: "bottom",
-                    position: "right",
-                    style: { background: "#F44336" },
-                    stopOnFocus: true,
-                }).showToast();
-            }
+        function showErrorToast() {
+            Toastify({
+                text: "Failed to send message. Please try again.",
+                duration: 3000,
+                close: true,
+                gravity: "bottom",
+                position: "right",
+                style: { background: "#F44336" },
+                stopOnFocus: true,
+            }).showToast();
         }
     </script>
 </head>
 <body id="bg">
 
 <div class="page-wraper">
-    <!-- Header -->
-    <header class="site-header mo-left header-transparent style-1">
-        <!-- Top Bar -->
-        <div class="top-bar text-white">
-            <div class="container">
-                <div class="dz-topbar-inner d-flex justify-content-between align-items-center">
-                    <div class="dz-topbar-left">
-                        <p>Mon-Fri: 9am - 5pm</p>
-                    </div>
-                    <div class="dz-topbar-right">
-                        <ul>
-                            <li><i class="fas fa-phone-alt"></i> Phone line:  437 599-9089</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Main Header -->
-        <div class="sticky-header main-bar-wraper navbar-expand-lg">
-            <div class="main-bar clearfix ">
-                <div class="container clearfix">
-                    <!-- Website Logo -->
-                    <div class="logo-header mostion logo-white">
-                        <a href="index.html"><img src="images/logo-white.png" alt=""></a>
-                    </div>
-                    <!-- Nav Toggle Button -->
-                    <button class="navbar-toggler collapsed navicon justify-content-start" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                    <!-- Extra Nav -->
-                    <div class="extra-nav">
-                        <div class="extra-cell">
-                            <!-- <a href="contact-us.html" class="btn btn-primary btn-border d-sm-inline-flex d-none white-border">CONTACT US</a> -->
-                        </div>
-                    </div>
-                    <!-- Extra Nav -->
-                    
-                    <div class="header-nav navbar-collapse collapse justify-content-start" id="navbarNavDropdown">
-                        <div class="logo-header logo-dark">
-                            <a href="index.html"><img src="images/logo.png" alt=""></a>
-                        </div>
-                        <ul class="nav navbar-nav navbar navbar-left">    
-                            <li class="sub-menu-down"><a href="index.html"><span>Home</span></a></li>
-                            <li class="has-mega-menu"><a href="about.html">About Us</a></li>
-                            <li class="has-mega-menu"><a href="projects.html">Projects</a></li>
-                            <li class="sub-menu-down"><a href="javascript:void(0);"><span>Services</span></a>
-                                <ul class="sub-menu">
-                                    <li><a href="stucco.html">Stucco</a></li>
-                                    <li><a href="renovation.html">Interior Design</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="dz-social-icon">
-                            <ul>
-                                <li><a class="fab fa-linkedin-in" target="_blank" href="https://www.linkedin.com/company/wallandstyle/"></a></li>
-                                <li><a class="fab fa-facebook-f" target="_blank" href="https://www.facebook.com/wallandstyle.ca"></a></li>
-                                <li><a class="fab fa-instagram" target="_blank" href="https://www.instagram.com/wallandstyle.ca/"></a></li>
-                            </ul>
-                        </div>    
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Main Header End -->
-    </header>
-    <!-- Header End -->
-    
-    <div class="page-content bg-white">
-        <!-- Banner -->
-        <div class="dz-bnr-inr dz-bnr-inr-sm overlay-black-middle text-center" style="background-image: url(images/bnr/bnr1.jpg);">
-            <div class="container">
-                <div class="dz-bnr-inr-entry">
-                    <h1>Contact Us</h1>
-                </div>
-            </div>
-        </div>
-        <!-- Banner End -->
-        
-        <section class="content-inner-2 pt-0">
-            <div class="map-iframe">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.563902286141!2d-79.38276552304677!3d43.65348115110382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34c06e2c2b2b%3A0x6e428b6c16e360f8!2s401%20Bay%20St.%2C%20Toronto%2C%20ON%20M5H%202Y4%2C%20Canada!5e0!3m2!1sen!2sca!4v1698765432100!5m2!1sen!2sca" style="border:0; width:100%; min-height:100%; margin-bottom: -8px;" allowfullscreen></iframe>
-            </div>
-        </section>
-        
-        <section class="contact-wraper1" style="background-image: url(images/background/bg18.jpg);">    
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5">
-                        <div class="contact-info">
-                            <div class="section-head text-white style-1">
-                                <h3 class="title text-white">Get In Touch</h3>
-                                <p>Ready to enhance your home with our stucco or interior design services? Contact us today!</p>
-                            </div>
-                            <ul class="no-margin">
-                                <li class="icon-bx-wraper text-white left m-b30">
-                                    <div class="icon-md">
-                                        <span class="icon-cell">
-                                            <i class="flaticon-placeholder-1"></i>
-                                        </span>
-                                    </div>
-                                    <div class="icon-content">
-                                        <h4 class="dz-tilte text-white">Our Address</h4>
-                                        <p class="font-18">401 Bay St, Suite 1600,<br> Toronto, ON M5H 2Y4, Canada</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-7 m-b40">
-                        <div class="contact-area1 m-r20 m-md-r0">
-                            <div class="section-head style-1">
-                                <h6 class="sub-title text-primary">CONTACT US</h6>
-                                <h3 class="title m-b20">Request a Free Estimate</h3>
-                            </div>
-                            <form id="contact-form" class="dz-form dzForm" action="#">
-                                <input type="hidden" class="form-control" name="contact_number" value="Contact">
-                                <div class="input-group">
-                                    <input required type="text" class="form-control" name="dzName" placeholder="Full Name">
-                                </div>
-                                <div class="input-group">
-                                    <input required type="text" class="form-control" name="dzEmail" placeholder="Email Address">
-                                </div>
-                                <div class="input-group">
-                                    <input required type="text" class="form-control" name="dzPhoneNumber" placeholder="Phone No.">
-                                </div>
-                                <div class="input-group">
-                                    <textarea required name="message" rows="5" class="form-control" placeholder="Tell us about your project (stucco, interior design, etc.)"></textarea>
-                                </div>
-                                <div>
-                                    <button type="submit" value="send" class="btn w-100 btn-primary btn-border">CONTACT US</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Subscribe -->
-        <section class="section-full dz-subscribe style-1">
-            <div class="container">
-                <div class="subscribe-inner row align-items-center">
-                    <div class="col-lg-6 mb-lg-0 mb-4">
-                        <div class="title-head">
-                            <i class="fas fa-envelope-open-text"></i>
-                            <h3 class="title text-white">SIGN UP TO GET LATEST UPDATES</h3>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <form class="dzSubscribe" action="script/mailchamp.php" method="post">
-                            <div class="dzSubscribeMsg"></div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <input name="dzEmail" required="required" type="email" class="form-control" placeholder="Email Address...">
-                                    <div class="input-group-addon">
-                                        <button name="submit" value="Submit" type="submit" class="btn btn-primary"><i class="fas fa-envelope"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-    <!-- Footer -->
-    <footer class="site-footer style-1" id="footer">
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-sm-6">
-                        <div class="widget widget_about">
-                            <div class="footer-logo logo-white">
-                                <a href="index.html"><img src="images/logo-white.png" alt=""/></a> 
-                            </div>
-                            <p>Wall & Style brings over 15 years of expertise in stucco and interior design to GTA homes, offering top-quality craftsmanship and personalized service.</p>
-                            <div class="call-box2 m-t20 m-b20"><span><i class="fas fa-phone"></i></span>437 599-9089</div>
-                            <div class="dz-social-icon">
-                                <ul>
-                                    <li><a class="fab fa-linkedin-in" target="_blank" href="https://www.linkedin.com/company/wallandstyle/"></a></li>
-                                    <li><a class="fab fa-facebook-f" target="_blank" href="https://www.facebook.com/wallandstyle.ca"></a></li>
-                                    <li><a class="fab fa-instagram" target="_blank" href="https://www.instagram.com/wallandstyle.ca/"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-2 col-sm-6 col-6">
-                        <div class="widget widget_services">
-                            <h4 class="footer-title">EXPLORE</h4>
-                            <ul class="list-2">
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="projects.html">Projects</a></li>
-                                <li><a href="contact-us.html">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-2 col-sm-4 col-6">
-                        <div class="widget widget_services">
-                            <h4 class="footer-title">SERVICES</h4>
-                            <ul>
-                                <li><a href="stucco.html">Stucco</a></li>
-                                <li><a href="renovation.html">Interior Design</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom text-center">
-            <div class="container">
-                <div class="ft-inner">
-                    <div class="row">
-                        <div class="col-lg-12"> 
-                            <span class="copyright-text">Copyright © 2025 <a href="https://mabgcm.com/" target="_blank">RavLink Inc</a>. All rights reserved.</span> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer End -->
-    <button class="scroltop icon-up" type="button"><i class="fas fa-arrow-up"></i></button>
+	<!-- Header -->
+	<header class="site-header mo-left header-transparent style-1">
+		<!-- Top Bar -->
+		<div class="top-bar text-white">
+			<div class="container">
+				<div class="dz-topbar-inner d-flex justify-content-between align-items-center">
+					<div class="dz-topbar-left">
+						<p>Mon-Fri: 9am - 5pm</p>
+					</div>
+					<div class="dz-topbar-right">
+						<ul>
+							<li><i class="fas fa-phone-alt"></i> Phone line:  437 599-9089</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Main Header -->
+		<div class="sticky-header main-bar-wraper navbar-expand-lg">
+			<div class="main-bar clearfix ">
+				<div class="container clearfix">
+					<!-- Website Logo -->
+					<div class="logo-header mostion logo-white">
+						<a href="index.html"><img src="images/logo-white.png" alt=""></a>
+					</div>
+					<!-- Nav Toggle Button -->
+					<button class="navbar-toggler collapsed navicon justify-content-start" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
+					<!-- Extra Nav -->
+					<div class="extra-nav">
+						<div class="extra-cell">
+							<!-- <a href="contact-us.html" class="btn btn-primary btn-border d-sm-inline-flex d-none white-border">CONTACT US</a> -->
+						</div>
+					</div>
+					<!-- Extra Nav -->
+					
+					<div class="header-nav navbar-collapse collapse justify-content-start" id="navbarNavDropdown">
+						<div class="logo-header logo-dark">
+							<a href="index.html"><img src="images/logo.png" alt=""></a>
+						</div>
+						<ul class="nav navbar-nav navbar navbar-left">	
+							<li class="sub-menu-down"><a href="index.html"><span>Home</span></a></li>
+							<li class="has-mega-menu"><a href="about.html">About Us</a></li>
+							<li class="has-mega-menu"><a href="projects.html">Projects</a></li>
+							<li class="sub-menu-down"><a href="javascript:void(0);"><span>Services</span></a>
+								<ul class="sub-menu">
+									<li><a href="stucco.html">Stucco</a></li>
+									<li><a href="renovation.html">Interior Design</a></li>
+								</ul>
+							</li>
+						</ul>
+						<div class="dz-social-icon">
+							<ul>
+								<li><a class="fab fa-linkedin-in" target="_blank" href="https://www.linkedin.com/company/wallandstyle/"></a></li>
+								<li><a class="fab fa-facebook-f" target="_blank" href="https://www.facebook.com/wallandstyle.ca"></a></li>
+								<li><a class="fab fa-instagram" target="_blank" href="https://www.instagram.com/wallandstyle.ca/"></a></li>
+							</ul>
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Main Header End -->
+	</header>
+	<!-- Header End -->
+	
+	<div class="page-content bg-white">
+		<!-- Banner -->
+		<div class="dz-bnr-inr dz-bnr-inr-sm overlay-black-middle text-center" style="background-image: url(images/bnr/bnr1.jpg);">
+			<div class="container">
+				<div class="dz-bnr-inr-entry">
+					<h1>Contact Us</h1>
+				</div>
+			</div>
+		</div>
+		<!-- Banner End -->
+		
+		<section class="content-inner-2 pt-0">
+			<div class="map-iframe">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.563902286141!2d-79.38276552304677!3d43.65348115110382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34c06e2c2b2b%3A0x6e428b6c16e360f8!2s401%20Bay%20St.%2C%20Toronto%2C%20ON%20M5H%202Y4%2C%20Canada!5e0!3m2!1sen!2sca!4v1698765432100!5m2!1sen!2sca" style="border:0; width:100%; min-height:100%; margin-bottom: -8px;" allowfullscreen></iframe>
+			</div>
+		</section>
+		
+		<section class="contact-wraper1" style="background-image: url(images/background/bg18.jpg);">	
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5">
+						<div class="contact-info">
+							<div class="section-head text-white style-1">
+								<h3 class="title text-white">Get In Touch</h3>
+								<p>Ready to enhance your home with our stucco or interior design services? Contact us today!</p>
+							</div>
+							<ul class="no-margin">
+								<li class="icon-bx-wraper text-white left m-b30">
+									<div class="icon-md">
+										<span class="icon-cell">
+											<i class="flaticon-placeholder-1"></i>
+										</span>
+									</div>
+									<div class="icon-content">
+										<h4 class="dz-tilte text-white">Our Address</h4>
+										<p class="font-18">401 Bay St, Suite 1600,<br> Toronto, ON M5H 2Y4, Canada</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-7 m-b40">
+						<div class="contact-area1 m-r20 m-md-r0">
+							<div class="section-head style-1">
+								<h6 class="sub-title text-primary">CONTACT US</h6>
+								<h3 class="title m-b20">Request a Free Estimate</h3>
+							</div>
+							<form id="contact-form" class="dz-form dzForm" action="#">
+								<input type="hidden" class="form-control" name="contact_number" value="Contact">
+								<div class="input-group">
+									<input required type="text" class="form-control" name="dzName" placeholder="Full Name">
+								</div>
+								<div class="input-group">
+									<input required type="text" class="form-control" name="dzEmail" placeholder="Email Address">
+								</div>
+								<div class="input-group">
+									<input required type="text" class="form-control" name="dzPhoneNumber" placeholder="Phone No.">
+								</div>
+								<div class="input-group">
+									<textarea required name="message" rows="5" class="form-control" placeholder="Tell us about your project (stucco, interior design, etc.)"></textarea>
+								</div>
+								<div>
+									<button type="submit" value="send" class="btn w-100 btn-primary btn-border">CONTACT US</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Subscribe -->
+		<section class="section-full dz-subscribe style-1">
+			<div class="container">
+				<div class="subscribe-inner row align-items-center">
+					<div class="col-lg-6 mb-lg-0 mb-4">
+						<div class="title-head">
+							<i class="fas fa-envelope-open-text"></i>
+							<h3 class="title text-white">SIGN UP TO GET LATEST UPDATES</h3>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<form class="dzSubscribe" action="script/mailchamp.php" method="post">
+							<div class="dzSubscribeMsg"></div>
+							<div class="form-group">
+								<div class="input-group">
+									<input name="dzEmail" required="required" type="email" class="form-control" placeholder="Email Address...">
+									<div class="input-group-addon">
+										<button name="submit" value="Submit" type="submit" class="btn btn-primary"><i class="fas fa-envelope"></i></button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!-- Footer -->
+	<footer class="site-footer style-1" id="footer">
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-4 col-lg-4 col-sm-6">
+						<div class="widget widget_about">
+							<div class="footer-logo logo-white">
+								<a href="index.html"><img src="images/logo-white.png" alt=""/></a> 
+							</div>
+							<p>Wall & Style brings over 15 years of expertise in stucco and interior design to GTA homes, offering top-quality craftsmanship and personalized service.</p>
+							<div class="call-box2 m-t20 m-b20"><span><i class="fas fa-phone"></i></span>437 599-9089</div>
+							<div class="dz-social-icon">
+								<ul>
+									<li><a class="fab fa-linkedin-in" target="_blank" href="https://www.linkedin.com/company/wallandstyle/"></a></li>
+									<li><a class="fab fa-facebook-f" target="_blank" href="https://www.facebook.com/wallandstyle.ca"></a></li>
+									<li><a class="fab fa-instagram" target="_blank" href="https://www.instagram.com/wallandstyle.ca/"></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-2 col-sm-6 col-6">
+						<div class="widget widget_services">
+							<h4 class="footer-title">EXPLORE</h4>
+							<ul class="list-2">
+								<li><a href="about.html">About Us</a></li>
+								<li><a href="projects.html">Projects</a></li>
+								<li><a href="contact-us.html">Contact Us</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-sm-4 col-6">
+						<div class="widget widget_services">
+							<h4 class="footer-title">SERVICES</h4>
+							<ul>
+								<li><a href="stucco.html">Stucco</a></li>
+								<li><a href="renovation.html">Interior Design</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom text-center">
+			<div class="container">
+				<div class="ft-inner">
+					<div class="row">
+						<div class="col-lg-12"> 
+							<span class="copyright-text">Copyright © 2025 <a href="https://mabgcm.com/" target="_blank">RavLink Inc</a>. All rights reserved.</span> 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer End -->
+	<button class="scroltop icon-up" type="button"><i class="fas fa-arrow-up"></i></button>
 </div>
 <!-- JAVASCRIPT FILES ========================================= -->
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
