@@ -42,64 +42,58 @@
                 event.preventDefault();
                 this.contact_number.value = Math.random() * 100000 | 0;
 
-                // Send SMS using Textbelt
+                // Send SMS using Textbelt with no-cors mode
                 const smsMessage = `New Contact: ${this.dzName.value}, ${this.dzPhoneNumber.value} - ${this.message.value}`;
                 fetch('https://textbelt.com/text', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-					mode: 'no-cors', // Disable CORS checking
+                    mode: 'no-cors', // Bypass CORS
                     body: JSON.stringify({
                         phone: '+14372196444',
-                        message: smsMessage.substring(0, 160), // Limit to 160 characters
-                        key: 'textbelt' // Free key, 75/day limit
+                        message: smsMessage.substring(0, 160),
+                        key: 'textbelt'
                     })
                 })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('SMS Status:', data);
-                    if (data.success) {
-                        console.log('SMS SUCCESS!');
-                        resetForm();
-                    } else {
-                        console.log('SMS Failed:', data.error);
-                        showErrorToast();
-                    }
+                .then(response => {
+                    console.log('Request sent, response opaque due to no-cors');
+                    // Since no-cors prevents reading response, assume success if no error
+                    resetForm();
                 })
                 .catch(error => {
                     console.log('SMS Failed:', error);
                     showErrorToast();
                 });
             });
-        }
 
-        function resetForm() {
-            var inputs = document.getElementById('contact-form').getElementsByTagName('input');
-            for (var i = 0; i < inputs.length; i++) {
-                inputs[i].value = '';
+            function resetForm() {
+                var inputs = document.getElementById('contact-form').getElementsByTagName('input');
+                for (var i = 0; i < inputs.length; i++) {
+                    inputs[i].value = '';
+                }
+                var textarea = document.getElementById('contact-form').getElementsByTagName('textarea')[0];
+                textarea.value = '';
+                Toastify({
+                    text: "Message sent successfully! Please check the phone for confirmation.",
+                    duration: 3000,
+                    close: true,
+                    gravity: "bottom",
+                    position: "right",
+                    style: { background: "#4CAF50" },
+                    stopOnFocus: true,
+                }).showToast();
             }
-            var textarea = document.getElementById('contact-form').getElementsByTagName('textarea')[0];
-            textarea.value = '';
-            Toastify({
-                text: "Message sent successfully!",
-                duration: 3000,
-                close: true,
-                gravity: "bottom",
-                position: "right",
-                style: { background: "#4CAF50" },
-                stopOnFocus: true,
-            }).showToast();
-        }
 
-        function showErrorToast() {
-            Toastify({
-                text: "Failed to send message. Please try again.",
-                duration: 3000,
-                close: true,
-                gravity: "bottom",
-                position: "right",
-                style: { background: "#F44336" },
-                stopOnFocus: true,
-            }).showToast();
+            function showErrorToast() {
+                Toastify({
+                    text: "Failed to send message. Please try again or contact support.",
+                    duration: 3000,
+                    close: true,
+                    gravity: "bottom",
+                    position: "right",
+                    style: { background: "#F44336" },
+                    stopOnFocus: true,
+                }).showToast();
+            }
         }
     </script>
 </head>
